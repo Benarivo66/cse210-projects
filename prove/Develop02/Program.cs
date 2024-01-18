@@ -43,10 +43,14 @@ class Program
                 PromptGenerator promptGen = new PromptGenerator();
                 promptGen._prompts = prompts;
                 string randomPrompt = promptGen.GetRandomPrompt();
+                Console.WriteLine("What is your current location (city, state)?");
+                Console.Write("> ");
+                string location = Console.ReadLine();
                 Console.WriteLine(randomPrompt);
                 Console.Write("> ");
                 string resp = Console.ReadLine();
 
+                entry._location = location;
                 entry._date = dateText;
                 entry._promptText = randomPrompt;
                 entry._entryText = resp;
