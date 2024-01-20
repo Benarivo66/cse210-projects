@@ -33,7 +33,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("Invalid input. Please enter a valid menu option.");
+            Console.WriteLine("\nInvalid input. Please enter a valid menu option.");
         }
         while (menuResp != 5)
         {
@@ -77,7 +77,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("Enter a number from one of the displayed numbers in the prompt");
+                Console.WriteLine("\nError: Please, enter a number from one of the displayed numbers in the prompt\n");
             }
             Console.WriteLine("Welcome to the Journal Program\nPlease select one of the following choices:");
             Console.Write("1. Write\n");
@@ -93,7 +93,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("Invalid input. Please enter a valid menu option.");
+                Console.WriteLine("\nInvalid input. Please enter a valid menu option.");
             }
         }
     }
