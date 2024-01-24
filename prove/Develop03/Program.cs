@@ -37,12 +37,12 @@ class Program
             reference = new Reference(book, chapter, verse, endVerse);
         }
         Scripture scripture = new Scripture(reference, text);
+        Console.Clear();
         Console.WriteLine(scripture.GetDisplayText());
-
-        Console.WriteLine("\nPress Enter to continue or type quit to exit");
 
         while (true)
         {
+            Console.WriteLine("\nPress Enter to continue or type quit to exit");
             string input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input))
             {
