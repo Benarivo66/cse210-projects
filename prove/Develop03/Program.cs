@@ -59,7 +59,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("Invalid input. Press Enter to continue or type 'quit' to exit.");
+                Console.WriteLine("Invalid input. Press Enter to continue or type 'quit' to exit.\n");
             }
         }
     }
