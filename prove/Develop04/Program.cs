@@ -26,30 +26,18 @@ class Program
         {
             if (menu == 1)
             {
-                // Activity activity = new Activity("breathing");
-                // activity.DisplayStartingMessage();
-                // string sessionLenStr = Console.ReadLine();
-                // int sessionLen = int.Parse(sessionLenStr);
                 int sessionLen = Helper("breathing");
                 BreathingActivity breathingActivity = new BreathingActivity(sessionLen);
                 breathingActivity.Run();
             }
             else if (menu == 2)
             {
-                // Activity activity = new Activity("reflecting");
-                // activity.DisplayStartingMessage();
-                // string sessionLenStr = Console.ReadLine();
-                // int sessionLen = int.Parse(sessionLenStr);
                 int sessionLen = Helper("reflecting");
                 ReflectingActivity reflectingActivity = new ReflectingActivity(sessionLen);
                 reflectingActivity.Run();
             }
             else if (menu == 3)
             {
-                // Activity activity = new Activity("listing");
-                // activity.DisplayStartingMessage();
-                // string sessionLenStr = Console.ReadLine();
-                // int sessionLen = int.Parse(sessionLenStr);
                 int sessionLen = Helper("listing");
                 ListingActivity listingActivity = new ListingActivity(sessionLen);
                 listingActivity.Run();
