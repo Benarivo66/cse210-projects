@@ -12,13 +12,8 @@ public class ChecklistGoal : Goal
         _target = target;
         _bonus = bonus;
         _amountCompleted = 0;
-        _className = "checklistgoal";
     }
 
-    // public int GetBonus()
-    // {
-    //     return _bonus;
-    // }
     public void SetAmountCompleted(int num)
     {
         _amountCompleted = num;

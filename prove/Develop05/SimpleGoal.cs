@@ -4,13 +4,12 @@ public class SimpleGoal : Goal
 {
     private bool _isComplete;
 
-    public SimpleGoal(string name, string description, int points, bool isComplete) : base(name, description, points)
+    public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
         _shortName = name;
         _description = description;
         _points = points;
-        _isComplete = isComplete;
-        _className = "simplegoal";
+        _isComplete = false;
     }
 
     public void SetIsComplete(bool boolean)

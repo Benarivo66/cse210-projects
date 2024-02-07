@@ -129,7 +129,7 @@ public class GoalManager
             string goalDescription = Console.ReadLine();
             Console.WriteLine("What is the amount of points associated with this goal? ");
             int goalPoints = int.Parse(Console.ReadLine());
-            SimpleGoal simpleGoal = new SimpleGoal(goalName, goalDescription, goalPoints, false);
+            SimpleGoal simpleGoal = new SimpleGoal(goalName, goalDescription, goalPoints);
             _goals.Add(simpleGoal);
         }
         else if (goalType == 2)
@@ -242,7 +242,8 @@ public class GoalManager
                 string description = parts[1];
                 int point = int.Parse(parts[2]);
                 bool boolean = bool.Parse(parts[3]);
-                SimpleGoal simpleGoal = new SimpleGoal(name, description, point, boolean);
+                SimpleGoal simpleGoal = new SimpleGoal(name, description, point);
+                simpleGoal.SetIsComplete(boolean);
                 _goals.Add(simpleGoal);
             }
             else if (parts.Length == 3)
