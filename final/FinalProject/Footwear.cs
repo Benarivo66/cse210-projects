@@ -14,7 +14,7 @@ public class Footwear : Product
         _size = size;
     }
 
-    public override double getShippingCost()
+    public override double GetShippingCost()
     {
         return 0.001 * _weight * _productPrice;
     }
@@ -28,5 +28,4 @@ public class Footwear : Product
     {
         return _size;
     }
-
 }

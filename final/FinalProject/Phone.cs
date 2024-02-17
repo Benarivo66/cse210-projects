@@ -21,7 +21,7 @@ public class Phone : Product
         return _productType;
     }
 
-    public override double getShippingCost()
+    public override double GetShippingCost()
     {
         return 0.05 * _weight * _productPrice;
     }

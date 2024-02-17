@@ -17,7 +17,7 @@ public class Refridgerator : Product
         return _capacity;
     }
 
-    public override double getShippingCost()
+    public override double GetShippingCost()
     {
         return 0.0002 * _weight * _productPrice;
     }

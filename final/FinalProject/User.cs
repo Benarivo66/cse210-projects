@@ -12,6 +12,12 @@ public class User
         _userType = userType;
         _filePath = "UserDB.txt";
     }
+    public User(string name, string password)
+    {
+        _name = name;
+        _password = password;
+        _filePath = "UserDB.txt";
+    }
     public void SignUp()
     {
         using (StreamWriter writer = new StreamWriter(_filePath))

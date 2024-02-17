@@ -22,7 +22,7 @@ public class Tv : Product
         return _displaytech;
     }
 
-    public override double getShippingCost()
+    public override double GetShippingCost()
     {
         return 0.0025 * _weight * _productPrice;
     }

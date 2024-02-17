@@ -75,7 +75,7 @@ public abstract class Product
         _productQuantity -= quantity;
     }
 
-    public abstract double getShippingCost();
+    public abstract double GetShippingCost();
     
 
 
