@@ -31,17 +31,25 @@ public class User
     public void Login()
     {
         string[] lines = System.IO.File.ReadAllLines(_filePath);
+        bool userFound = false;
         for (int i = 0; i < lines.Length; i++)
         {
             string line = lines[i];
             string[] parts = line.Split("~");
             string dbName = parts[0];
             string dbPassword = parts[1];
-            if(_name == dbName && _password == dbPassword)
-            {
+            Console.WriteLine($"_name{_name} dbName {dbName} _password {_password} dbPassword {dbPassword}");
+            if(_name.ToLower() == dbName.ToLower() && _password == dbPassword)
+            {   
+                userFound = true;
                 Console.WriteLine("Login Successful.");
                 return;
             }
+        }
+
+        if(userFound == false)
+        {
+            throw new CustomException(CustomException.ErrorCode.UserNotFound, "User not found");
         }
 
         Console.WriteLine("Sign up to enjoy cheap products.");
