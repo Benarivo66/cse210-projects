@@ -55,4 +55,9 @@ public class User
         Console.WriteLine("Sign up to enjoy cheap products.");
     }
 
+    public string GetUserType()
+    {
+        return _userType;
+    }
+
 }

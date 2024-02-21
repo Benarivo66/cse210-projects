@@ -24,12 +24,10 @@ public class Store
     {
         try
         {
-            // string[] promptNumList = { "1", "2", "3", "4", "5" };
-
             openingMessage();
             string entranceInputStr = Console.ReadLine();
 
-            if(entranceInputStr != "1" || entranceInputStr != "2")
+            if (entranceInputStr != "1" || entranceInputStr != "2")
             {
                 throw new CustomException(CustomException.ErrorCode.InvalidInput, "Invalid input");
             }
@@ -55,17 +53,16 @@ public class Store
 
             openingPrompt(userName);
             string userActivityStr = Console.ReadLine();
-            // if(promptNumList.Contains(userActivityStr) == false)
-            // {
-            //     throw new CustomException(CustomException.ErrorCode.InvalidInput, "Invalid input");
-            // }
             int userActivity = int.Parse(userActivityStr);
 
             while (userActivity != 5)
             {
                 if (userActivity == 1)
                 {
-                    AddProducts();
+                    if (_user.GetUserType().ToLower() == "admin")
+                    {
+                        AddProducts();
+                    }
                 }
                 else if (userActivity == 2)
                 {
@@ -73,7 +70,10 @@ public class Store
                 }
                 else if (userActivity == 3)
                 {
-                    UpdateProducts();
+                    if (_user.GetUserType().ToLower() == "admin")
+                    {
+                        UpdateProducts();
+                    }
                 }
                 else if (userActivity == 4)
                 {
@@ -92,22 +92,6 @@ public class Store
         catch (CustomException exception)
         {
             Console.WriteLine(exception.Message);
-    //         switch (exception.Code)
-    // {
-    //     case CustomException.ErrorCode.UserNotFound:
-    //         Console.WriteLine("User not found");
-    //         break;
-    //     case CustomException.ErrorCode.IdNotFound:
-    //         Console.WriteLine("ID not found");
-    //         break;
-    //     case CustomException.ErrorCode.InvalidInput:
-    //         Console.WriteLine("Invalid input");
-    //         break;
-        
-    //     default:
-    //         Console.WriteLine("An error occurred: " + exception.Message);
-    //         break;
-    // }
         }
     }
 
@@ -341,7 +325,7 @@ public class Store
             }
             if (productFound == false)
             {
-                Console.WriteLine($"phone with id {idStr}  not found");
+                throw new CustomException(CustomException.ErrorCode.IdNotFound, "Id not found");
             }
         }
         if (option == 3)
@@ -357,7 +341,7 @@ public class Store
             }
             if (productFound == false)
             {
-                Console.WriteLine($"phone with id {idStr}  not found");
+                throw new CustomException(CustomException.ErrorCode.IdNotFound, "Id not found");
             }
         }
         if (option == 4)
@@ -373,7 +357,7 @@ public class Store
             }
             if (productFound == false)
             {
-                Console.WriteLine($"phone with id {idStr}  not found");
+                throw new CustomException(CustomException.ErrorCode.IdNotFound, "Id not found");
             }
         }
 
@@ -424,7 +408,7 @@ public class Store
             }
             if (productFound == false)
             {
-                Console.WriteLine($"footwear with id {idStr}  not found");
+                throw new CustomException(CustomException.ErrorCode.IdNotFound, "Id not found");
             }
         }
 
@@ -457,7 +441,7 @@ public class Store
             }
             if (productFound == false)
             {
-                Console.WriteLine($"tv with id {idStr}  not found");
+                throw new CustomException(CustomException.ErrorCode.IdNotFound, "Id not found");
             }
         }
 
@@ -490,7 +474,7 @@ public class Store
             }
             if (productFound == false)
             {
-                Console.WriteLine($"phone with id {idStr}  not found");
+                throw new CustomException(CustomException.ErrorCode.IdNotFound, "Id not found");
             }
         }
 
@@ -522,7 +506,7 @@ public class Store
             }
             if (productFound == false)
             {
-                Console.WriteLine($"refridgerator with id {idStr}  not found");
+                throw new CustomException(CustomException.ErrorCode.IdNotFound, "Id not found");
             }
         }
     }
