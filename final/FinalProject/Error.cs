@@ -6,6 +6,7 @@ public class CustomException : Exception
         UserNotFound,
         IdNotFound,
         InvalidInput,
+        AdminPriviledge
     }
 
     public ErrorCode Code { get; }

@@ -20,7 +20,7 @@ public class User
     }
     public void SignUp()
     {
-        using (StreamWriter writer = new StreamWriter(_filePath))
+        using (StreamWriter writer = new StreamWriter(_filePath, true))
         {
             string userInfo = $"{_name}~{_password}~{_userType}";
             writer.WriteLine(userInfo);
@@ -38,7 +38,7 @@ public class User
             string[] parts = line.Split("~");
             string dbName = parts[0];
             string dbPassword = parts[1];
-            Console.WriteLine($"_name{_name} dbName {dbName} _password {_password} dbPassword {dbPassword}");
+            _userType = parts[2];
             if(_name.ToLower() == dbName.ToLower() && _password == dbPassword)
             {   
                 userFound = true;

@@ -27,7 +27,7 @@ public class Store
             openingMessage();
             string entranceInputStr = Console.ReadLine();
 
-            if (entranceInputStr != "1" || entranceInputStr != "2")
+            if (entranceInputStr != "1" && entranceInputStr != "2")
             {
                 throw new CustomException(CustomException.ErrorCode.InvalidInput, "Invalid input");
             }
@@ -57,31 +57,50 @@ public class Store
 
             while (userActivity != 5)
             {
-                if (userActivity == 1)
+                try
                 {
-                    if (_user.GetUserType().ToLower() == "admin")
+                    if (userActivity == 1)
                     {
-                        AddProducts();
+                        string userTyp = _user?.GetUserType();
+
+                        if (userTyp != null && userTyp.ToLower() == "admin")
+                        {
+                            AddProducts();
+                        }
+                        else
+                        {
+                            throw new CustomException(CustomException.ErrorCode.AdminPriviledge, "Only Admin can access this route");
+                        }
+                    }
+
+                    else if (userActivity == 2)
+                    {
+                        ViewProducts();
+                    }
+                    else if (userActivity == 3)
+                    {
+                        string userTyp = _user?.GetUserType();
+                        if (userTyp != null && userTyp.ToLower() == "admin")
+                        {
+                            UpdateProducts();
+                        }
+                        else
+                        {
+                            throw new CustomException(CustomException.ErrorCode.AdminPriviledge, "Only Admin can access this route");
+                        }
+                    }
+                    else if (userActivity == 4)
+                    {
+                        PurchaseProducts();
+                    }
+                    else
+                    {
+                        throw new CustomException(CustomException.ErrorCode.InvalidInput, "Invalid input");
                     }
                 }
-                else if (userActivity == 2)
+                catch (CustomException exception)
                 {
-                    ViewProducts();
-                }
-                else if (userActivity == 3)
-                {
-                    if (_user.GetUserType().ToLower() == "admin")
-                    {
-                        UpdateProducts();
-                    }
-                }
-                else if (userActivity == 4)
-                {
-                    PurchaseProducts();
-                }
-                else
-                {
-                    throw new CustomException(CustomException.ErrorCode.InvalidInput, "Invalid input");
+                    Console.WriteLine(exception.Message);
                 }
 
                 openingPrompt(userName);
@@ -146,7 +165,6 @@ public class Store
         string weightStr = Console.ReadLine();
         //check invalid Input Exception
         double weight = double.Parse(weightStr);
-        Console.WriteLine("Enter the color");
 
         return (price, qty, weight);
     }
@@ -384,10 +402,10 @@ public class Store
             {
                 if (footwear.GetProductID() == idStr)
                 {
+                    productFound = true;
                     int originalQty = footwear.GetQuantity();
                     if (originalQty >= qty)
                     {
-                        productFound = true;
                         double totalCost = (qty * footwear.GetPrice()) + footwear.GetShippingCost();
                         Console.WriteLine("You have successfully made an order of:");
                         string purchaseInfo = $"{qty} footwear(s) at a total price of {totalCost}";
@@ -398,13 +416,15 @@ public class Store
                         footwear.SetQuantity(newQty);
                         _total += totalCost;
                         _invoice.Add(purchaseInfo);
-
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Quantity desired is greater than quantity available");
+                        break;
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Quantity desired is greater than quantity available");
-                }
+
             }
             if (productFound == false)
             {
@@ -418,10 +438,10 @@ public class Store
             {
                 if (tv.GetProductID() == idStr)
                 {
+                    productFound = true;
                     int originalQty = tv.GetQuantity();
                     if (originalQty >= qty)
                     {
-                        productFound = true;
                         double totalCost = (qty * tv.GetPrice()) + tv.GetShippingCost();
                         Console.WriteLine("You have successfully made an order of:");
                         string purchaseInfo = $"{qty} tv(s) at a total price of {totalCost}";
@@ -432,12 +452,15 @@ public class Store
                         tv.SetQuantity(newQty);
                         _total += totalCost;
                         _invoice.Add(purchaseInfo);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Quantity desired is greater than quantity available");
+                        break;
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Quantity desired is greater than quantity available");
-                }
+
             }
             if (productFound == false)
             {
@@ -450,11 +473,11 @@ public class Store
             foreach (Phone phone in _phones)
             {
                 if (phone.GetProductID() == idStr)
-                {
+                {   
+                    productFound = true;
                     int originalQty = phone.GetQuantity();
                     if (originalQty >= qty)
                     {
-                        productFound = true;
                         double totalCost = (qty * phone.GetPrice()) + phone.GetShippingCost();
                         Console.WriteLine("You have successfully made an order of:");
                         string purchaseInfo = $"{qty} phone(s) at a total price of {totalCost}";
@@ -465,12 +488,15 @@ public class Store
                         phone.SetQuantity(newQty);
                         _total += totalCost;
                         _invoice.Add(purchaseInfo);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Quantity desired is greater than quantity available");
+                        break;
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Quantity desired is greater than quantity available");
-                }
+
             }
             if (productFound == false)
             {
@@ -484,10 +510,10 @@ public class Store
             {
                 if (refridgerator.GetProductID() == idStr)
                 {
+                    productFound = true;
                     int originalQty = refridgerator.GetQuantity();
                     if (originalQty >= qty)
                     {
-                        productFound = true;
                         double totalCost = (qty * refridgerator.GetPrice()) + refridgerator.GetShippingCost();
                         Console.WriteLine("You have successfully made an order of:");
                         string purchaseInfo = $"{qty} refridgerator(s) at a total price of {totalCost}";
@@ -497,12 +523,15 @@ public class Store
                         refridgerator.SetQuantity(newQty);
                         _total += totalCost;
                         _invoice.Add(purchaseInfo);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Quantity desired is greater than quantity available");
+                        break;
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Quantity desired is greater than quantity available");
-                }
+
             }
             if (productFound == false)
             {
